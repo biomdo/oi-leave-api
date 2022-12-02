@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
+        //Creates table admins for those with all access rights
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('username', 20)->unique();
+            $table->string('name', 100);
+            $table->string('password', 40);
             $table->timestamps();
         });
     }

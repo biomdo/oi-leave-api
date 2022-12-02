@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('leaves', function (Blueprint $table) {
+        //Creates leave types table
+        Schema::create('leave_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name');//Maternal, Paternal, Annual, Compasionate, Study, etc
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaves');
+        Schema::dropIfExists('leave_types');
     }
 };

@@ -13,4 +13,9 @@ class LeaveApplication extends Model
     public function employee(){
         return $this->belongsTo(Employee::class);
     }
+
+    //Establishes a Many-to-1 relation that many leave applications can belong to 1 leave type
+    public function leaveType(){
+        return $this->belongsTo(LeaveType::class);
+    }
 }
