@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,10 @@ class AdminFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
+        return [       
+            'username' => 'admin',
+            'name'=>'OI ADMIN',
+            'password' => Hash::make('password') //Hashed password
         ];
     }
 }

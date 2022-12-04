@@ -17,7 +17,6 @@ class LeaveTypeFactory extends Factory
     public function definition()
     {
         return [
-            //
         ];
     }
 }

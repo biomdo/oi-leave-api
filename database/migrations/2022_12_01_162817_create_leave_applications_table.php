@@ -18,10 +18,10 @@ return new class extends Migration
             $table->id();
             $table->integer('employee_id');
             $table->integer('leave_type_id'); //Selected from the leave type
-            $table->timestamps('application_date'); //Date the application was made
-            $table->leave_days('leave_type_id', 3);
-            $table->timestamps('start_date');
-            $table->timestamps('end_date');
+            $table->timestamp('application_date'); //Date the application was made
+            $table->integer('leave_days');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
             $table->integer('handover_employee_id'); //Staff being handed over the work
             $table->binary('handover_report'); //file uploaded as handover report 
             $table->text('request_comments');
