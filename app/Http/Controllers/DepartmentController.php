@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Http\Resources\DepartmentCollection;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use App\Http\Resources\DepartmentResource;
 
 class DepartmentController extends Controller
 {
@@ -15,7 +17,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        return new DepartmentCollection(Department::all());//Get all Departments
     }
 
     /**
@@ -47,7 +49,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return new DepartmentResource($department);
     }
 
     /**

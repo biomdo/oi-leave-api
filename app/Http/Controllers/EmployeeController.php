@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Http\Resources\EmployeeCollection;
+use App\Http\Resources\EmployeeResource;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +17,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return new EmployeeCollection(Employee::paginate());//Get all employees but paginate since they may be many
     }
 
     /**
@@ -47,7 +49,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return new EmployeeResource($employee);
     }
 
     /**

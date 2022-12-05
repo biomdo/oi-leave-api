@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\LeaveType;
 use App\Http\Requests\StoreLeaveTypeRequest;
 use App\Http\Requests\UpdateLeaveTypeRequest;
+use App\Http\Resources\LeaveTypeCollection;
+use App\Http\Resources\LeaveTypeResource;
 
 class LeaveTypeController extends Controller
 {
@@ -15,7 +17,7 @@ class LeaveTypeController extends Controller
      */
     public function index()
     {
-        //
+        return new LeaveTypeCollection(LeaveType::all());
     }
 
     /**
@@ -47,7 +49,7 @@ class LeaveTypeController extends Controller
      */
     public function show(LeaveType $leaveType)
     {
-        //
+        return new LeaveTypeResource($leaveType);
     }
 
     /**

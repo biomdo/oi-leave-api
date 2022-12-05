@@ -23,11 +23,11 @@ return new class extends Migration
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->integer('handover_employee_id'); //Staff being handed over the work
-            $table->binary('handover_report'); //file uploaded as handover report 
-            $table->text('request_comments');
+            $table->binary('handover_report')->nullable(); //file uploaded as handover report 
+            $table->text('request_comments')->nullable();
             $table->string('status'); //Approved, Declined, Deleted
-            $table->integer('responding_employee_id');
-            $table->text('response_comment');
+            $table->integer('responding_employee_id')->nullable();
+            $table->text('response_comments')->nullable();
             $table->timestamps();
         });
     }

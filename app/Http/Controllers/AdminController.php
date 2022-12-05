@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Http\Resources\AdminResource;
+use App\Http\Resources\AdminCollection;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 
@@ -15,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return new AdminCollection(Admin::all()); //Get all admins
     }
 
     /**
@@ -47,7 +49,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        //
+        return new AdminResource($admin); //Get Admin by ID (Primary Key)
     }
 
     /**

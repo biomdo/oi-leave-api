@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\LeaveApplication;
 use App\Http\Requests\StoreLeaveApplicationRequest;
 use App\Http\Requests\UpdateLeaveApplicationRequest;
+use App\Http\Resources\LeaveApplicationCollection;
+use App\Http\Resources\LeaveApplicationResource;
 
 class LeaveApplicationController extends Controller
 {
@@ -15,7 +17,7 @@ class LeaveApplicationController extends Controller
      */
     public function index()
     {
-        //
+        return new LeaveApplicationCollection(LeaveApplication::paginate());
     }
 
     /**
@@ -47,7 +49,7 @@ class LeaveApplicationController extends Controller
      */
     public function show(LeaveApplication $leaveApplication)
     {
-        //
+        return new LeaveApplicationResource($leaveApplication);
     }
 
     /**
