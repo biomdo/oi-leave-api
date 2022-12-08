@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use Illuminate\Http\Request;
+use App\Services\EmployeeFilter;
+use App\Http\Resources\EmployeeResource;
+use App\Http\Resources\EmployeeCollection;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
-use App\Http\Resources\EmployeeCollection;
-use App\Http\Resources\EmployeeResource;
 
 class EmployeeController extends Controller
 {
@@ -15,19 +17,16 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new EmployeeCollection(Employee::paginate());//Get all employees but paginate since they may be many
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        // error_log($request);
+        $filter = new EmployeeFilter();
+        $filterItems = $filter->transform($request);
+        if(count($filterItems)==0){
+            return new EmployeeCollection(Employee::paginate());//Get all employees but paginate since they may be many
+        } else{
+            return new EmployeeCollection(Employee::where($filterItems)->paginate());//Get all employees as per filter query then paginate
+        }
     }
 
     /**
@@ -38,7 +37,9 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        //
+        $employee = Employee::create($request->all());
+        return $employee;
+
     }
 
     /**
@@ -50,17 +51,6 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return new EmployeeResource($employee);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Employee $employee)
-    {
-        //
     }
 
     /**
@@ -83,6 +73,8 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        
+        return response('', 204);
     }
 }

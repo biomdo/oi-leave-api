@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('other_names');
             $table->string('title')->nullable()->default(NULL); //Mr, Miss, Mrs, Dr, Prof, Sir
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at');
-            $table->string('phone_number')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone_number')->unique()->nullable();
             $table->string('password'); //Hashed password
             $table->string('id_type')->nullable()->default(NULL); //National ID, Passort
             $table->string('id_number')->nullable()->default(NULL);

@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'pf_number',
+        'surname', 
+        'surname', 
+        'other_names', 
+        'email', 
+        'phone_number',
+        'password' 
+    ];
 
     //Establishes a 1-to-Many relation that 1 employee can have many leave applications
     public function leaveApplications(){

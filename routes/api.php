@@ -23,8 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('admin', AdminController::class);
+// Route::apiResource('admin', AdminController::class);
 Route::apiResource('department', DepartmentController::class);
 Route::apiResource('employee', EmployeeController::class);
-Route::apiResource('leaveapplication', LeaveApplicationController::class);
-Route::apiResource('leavetype', LeaveTypeController::class);
+Route::apiResource('leaveApplication', LeaveApplicationController::class);
+Route::apiResource('leaveType', LeaveTypeController::class);
