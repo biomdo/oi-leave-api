@@ -17,8 +17,7 @@ class LeaveTypeController extends Controller
      */
     public function index()
     {
-        return LeaveType::all();
-        // return new LeaveTypeCollection(LeaveType::all());
+        return new LeaveTypeCollection(LeaveType::all());
     }
 
     /**
@@ -50,8 +49,7 @@ class LeaveTypeController extends Controller
      */
     public function show(LeaveType $leaveType)
     {
-        // return new LeaveTypeResource($leaveType);
-        return $leaveType;
+        return new LeaveTypeResource($leaveType);
     }
 
     /**
